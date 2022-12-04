@@ -96,7 +96,7 @@
 
 .game-description-image {
     width: 700px; 
-    height: fit-content; 
+    height: auto; 
     image-rendering: optimizeQuality;
     position: relative;
 }
