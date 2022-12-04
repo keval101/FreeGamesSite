@@ -1,7 +1,4 @@
 .navigation {
-    position: absolute;
-    top: 0;
-    width: 100%;
     transition: all 0.4s ease-in;
 }
 
