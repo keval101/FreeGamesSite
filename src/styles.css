@@ -1,0 +1,69 @@
+/* You can add global styles to this file, and also import other style files */
+*,h1,p {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/* #461E52 | #DD517F | #E68E36 | #556DC8 | #7998EE */
+
+/* #de0f10 | #6a2126 | #141415 | #d8d7d8 | #3d292b */
+
+:root{
+    --bg-color: #141415;
+    --text-color: #d8d7d8;
+    --primary-color: #de0f10;
+    --secondary-bg-color: rgba(50, 50, 51, 0.4);
+}
+
+html,body {
+    /* font-size: 1rem; */
+    scroll-behavior: smooth !important;
+}
+
+body {
+    font-size: 1.2rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    /* background-image: url(./assets/images/0.jpg); */
+    background-image: url(./assets/images/3.png);
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.body-padding {
+    padding: 0 5rem;
+}
+
+img {
+    width: 100%;
+    max-height: 100%;
+}
+
+
+ /* width */
+ ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    /* box-shadow: inset 0 0 5px grey;  */
+    border-radius: 4px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(216, 8, 8, 0.8);
+    border-radius: 4px;
+  }

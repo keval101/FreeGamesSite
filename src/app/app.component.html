@@ -1,0 +1,10 @@
+<div class="navigation" [ngClass]="{'open-menu': isMenuOpen}">
+    <app-navbar (closeSidebar)="openMenu()"></app-navbar>
+</div>
+
+<router-outlet></router-outlet>
+<app-footer></app-footer>
+
+<button class="menu-toggle d-flex justify-content-center align-items-center" *ngIf="isMobileScreen" (click)="openMenu()">
+    <img src="/assets/images/icon.png" alt="">
+</button>

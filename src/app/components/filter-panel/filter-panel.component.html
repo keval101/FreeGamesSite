@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center w-100 align-items-center filter-container">
+    <div class="filter-panel d-flex align-items-center">
+        <div class="search-panel input-search-container d-flex align-items-center">
+            <div class="input-search-group d-flex align-items-center">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" name="search" id="search" placeholder="Search..." (input)="searchGame($event)" [(ngModel)]="searchItemName">
+            </div>
+        </div>
+
+        <div class="d-flex w-100">
+            <div class="search-panel filter-tags-container flex-grow-1 d-flex align-items-center" #elemt 
+            (mousedown)="startDragging($event, false, elemt)" (mouseup)="stopDragging($event, false)"
+            (mouseleave)="stopDragging($event, false)" (mousemove)="moveEvent($event, elemt)">
+                <div class="filter-tags d-flex">
+                    <p class="tag mb-0" (click)="clearFilter()" [class.active]="!hasSearched">All Games</p>
+                    <p class="tag mb-0 active" *ngFor="let tag of selectedTags" (click)="removeSelectedTag(tag.id)">{{tag.name}}</p>
+                </div>
+            </div>
+    
+            <div class="d-flex align-items-center " dropdown [container]="'body'" [insideClick]="true">
+                <button id="button-animated" class="filter-button" dropdownToggle aria-controls="dropdown-basic">
+                    <img src="assets/icons/filter.svg" alt="filter-icon">
+                </button>
+                <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="button-basic">
+    
+                <li role="menuitem" *ngFor="let tag of filterTags" class="field-checkbox">
+                    <span class="dropdown-item">
+                        <p-checkbox name="group2" value="category" [value]="tag" 
+                        (onChange)="filterGamesByTags()" [(ngModel)]="selectedTags" [inputId]="tag.id" class="dropdown-checkbox"></p-checkbox> 
+                        <label [for]="tag.id" class="w-100 dropdown-label">{{tag.name}}</label>
+                    </span>
+                </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<ng-container *ngIf="filterGames.length && isResponse">
+    <app-home [games]="filterGames"></app-home>
+</ng-container>
+
+<ng-container *ngIf="!isResponse">
+    <app-loading></app-loading>
+</ng-container>
+
+<ng-container *ngIf="(!filterGames.length && selectedTags.length) || (!filterGames.length && hasSearched)">
+    <div class="no-result-container d-flex justify-content-center w-100">
+        <div class="no-result d-flex align-items-center flex-column justify-content-center">
+            <img src="../../../assets/images/icons8-search-800.png" alt="search" class="no-result-image">
+            <p class="fw-bold fs-4 mb-0 no-result-title">No matching search results</p>
+            <p class="fs-5 no-result-text">Try again using more general search terms</p>
+            <button class="no-result-button" (click)="clearFilter()">Clear Filter <img src="../../../assets/icons/refresh.svg"></button>
+        </div>
+    </div>
+</ng-container>

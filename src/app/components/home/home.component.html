@@ -1,0 +1,36 @@
+<!-- <div class="slider">
+    <p-carousel [value]="randomGameArray" [circular]="true" [autoplayInterval]="2000">
+        <ng-template let-car pTemplate="item">
+            <div class="game-carousel-item"> 
+               <img [src]="car?.screenshots[0]?.image" alt="" class="game-carousel-item-image">
+            </div>
+        </ng-template>
+    </p-carousel>
+</div> -->
+
+<div class="body-padding game-list" *ngIf="isResponse">
+    <ng-container *ngFor="let game of games">
+        <div class="game-card" [routerLink]="['/game-detail', game.id]">
+            <div class="game-card-image">
+                <img [src]="game.thumbnail" [alt]="game.title">
+            </div>
+            <div class="game-card-content">
+                <p class="game-card-title">{{game.title}}</p> 
+                <div class="game-short-description">
+                    <p class="game-short-description-text">{{game.short_description}}</p>
+                </div>
+                <div class="game-tags mt-3 d-flex align-items-center">
+                    <i class="fa-brands fa-windows pc-platform" 
+                    *ngIf="game.platform !== 'Web Browser'"></i>
+                    <i class="fa-solid fa-globe web-platform"
+                    *ngIf="game.platform === 'Web Browser'"></i>
+                    <p class="game-genre-tag mb-0">{{game.genre}}</p>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+<ng-container *ngIf="!isResponse">
+    <app-loading></app-loading>
+</ng-container>

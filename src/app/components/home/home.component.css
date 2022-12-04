@@ -1,0 +1,152 @@
+.game-list {
+    /* display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    width: 100%; */
+    padding: 4rem 8rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-gap: 2.5rem;
+}
+
+.game-card {
+    border-radius: 8px;
+    min-width: 380px;
+    background-color: var(--secondary-bg-color);
+    transition: all 0.4s ease;
+    backdrop-filter: blur(2px);
+}
+
+.game-card:hover {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+.game-card-image {
+    padding: 10px;
+}
+
+.game-card-image img {
+    border-radius: 8px;
+    image-rendering: optimizeQuality;
+}
+
+.game-card-content {
+    padding: 0 1.2rem 1.2rem 1.2rem;
+}
+
+.game-card-title {
+    margin: 0.5rem 0;
+    padding: 0;
+}
+
+.game-short-description {
+    max-width: 100%;
+    font-size: 1rem;
+    color: rgba(184, 183, 183)
+}
+
+.game-card:hover .game-genre-tag ,
+.game-card:hover .pc-platform,
+.game-card:hover .web-platform {
+    background-color: var(--bg-color);
+    transition: all 0.4s ease;
+}
+
+.pc-platform, 
+.web-platform {
+    padding: 12px;
+    border-radius: 100%;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(255, 4, 4, 0.587);
+    transition: all 0.4s ease;
+}
+
+.game-short-description-text {
+    overflow: hidden;
+    text-overflow:ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient: vertical;  
+}
+
+.game-genre-tag {
+    border-radius: 20px;
+    padding: 4px 12px;
+    margin-left: 8px;
+    background-color: rgba(255, 4, 4, 0.587);
+    transition: all 0.4s ease;
+}
+
+.p-carousel .p-carousel-content .p-carousel-prev, .p-carousel .p-carousel-content .p-carousel-next,
+.p-carousel-indicators{
+    display: none !important;
+}
+
+.game-carousel-item {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+}
+
+.game-carousel-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9));
+
+}
+
+.game-carousel-item-image {
+    object-fit: cover;
+}
+
+
+@media screen and (max-width: 1480px){
+ .game-list {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+ }
+ .game-card {
+    min-width: auto;
+ }
+
+ .game-genre-tag {
+    font-size: 16px;
+ }
+ .pc-platform, .web-platform {
+    width: auto;
+    height: auto;
+    padding: 8px;
+ }
+ .fa-windows:before {
+    font-size: 16px;
+ }
+}
+
+@media screen and (max-width: 1240px){
+    .game-list {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+     }
+}
+
+@media screen and (max-width: 1024px){
+    .game-list {
+        padding: 4rem;
+     }
+}
+
+@media screen and (max-width: 600px){
+    .game-list {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        padding: 20px;
+     }
+}
