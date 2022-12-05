@@ -17,7 +17,7 @@ export class FilterPanelComponent implements OnInit {
   isResponse = false;
   mouseDown = false;
   startX: any;
-
+  isSortedGames = false;
   scrollLeft: any;
 
   slider = document.querySelector<HTMLElement>('.filter-tags-container');
@@ -101,5 +101,20 @@ export class FilterPanelComponent implements OnInit {
     const index = this.selectedTags.findIndex(x => x.id === id)
     this.selectedTags.splice(index, 1);
     this.filterGamesByTags();
+  }
+
+  sortGames(): void {
+    const tags = []
+    this.selectedTags.map(x => tags.push(x.id));
+    const payload = tags.join('.')
+
+    this._service.sortGames('alphabetical', payload ?? '').subscribe(res => {
+      if(this.isSortedGames === true) {
+        this.filterGames = res;
+      } else {
+        this.filterGames = res.reverse();
+      }
+    })
+    this.isSortedGames = !this.isSortedGames
   }
 }

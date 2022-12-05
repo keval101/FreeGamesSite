@@ -64,8 +64,18 @@
     border-radius: 10px;
 }
 
+.sort-icon {
+    height: 37px;
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+.sort-icon img {
+    width: 24px;
+    margin-bottom: 4px;
+}
+
 .tag {
-    /* background-color: var(--primary-color); */
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.2);
     color: #fff;
@@ -76,9 +86,10 @@
     display: inline-block;
 }
 
+.inactive-sort,
 .tag:hover,
 .tag.active {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color) !important;
     transition: all 0.4s ease;
 }
 
@@ -319,5 +330,28 @@
 
         .no-result-button img {
             width: 18px;
+        }
+
+        .tag {
+            font-size: 12px;
+        }
+
+        .filter-button {
+            width: 34px;
+            padding: 0.2rem 0.2rem;
+            margin-left: 1.2rem;
+        }
+
+        .filter-button img {
+            width: 22px;
+            margin-bottom: 2px;
+        }
+
+        .sort-icon {
+            height: 35px;
+        }
+
+        .sort-icon img {
+            width: 20px;
         }
     }

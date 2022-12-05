@@ -72,6 +72,23 @@ export class GameService {
     );
   }
 
+  sortGames(sortBy?: string, tag?: string): Observable<any> {
+    let filterPayload
+    if(tag) filterPayload = `filter?tag=${tag}`;
+    if(sortBy) filterPayload = `games?sort-by=${sortBy}`;
+    if(tag && sortBy) filterPayload = `filter?tag=${tag}&sort=${sortBy}`;
+
+    return this._http.get(`${API_URL}/${filterPayload}`, {headers: this.headers})
+    .pipe(
+      map((response) => {
+        return response;
+      }),
+      catchError((err) => {
+        return of(err);
+      }),
+    );
+  }
+
 
   gameTags: Tag[] = [
     {
