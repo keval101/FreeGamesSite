@@ -300,13 +300,18 @@
 }
 
 @media screen and (max-width: 420px){
+
+    .game-cover {
+        height: 50vh;
+    }
+    
     .game-cover-title {
-        font-size: 40px;
+        font-size: 22px;
         margin-bottom: 4px;
     }
 
     .game-cover-text {
-        font-size: 14px;
+        font-size: 12px;
         margin-bottom: 4px;
     }
 
