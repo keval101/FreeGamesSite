@@ -1,27 +1,18 @@
-# GameSite
+# Free Games Site
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+To Start the Project install angular cli using
+npm install -g @angular/cli
 
-## Development server
+to run the project run following commands
+1. npm install 
+2. ng serve
+3. https://localhost:4200/
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+or you can see live link
+https://freepcgames.netlify.app/
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![home](https://user-images.githubusercontent.com/62419921/205966871-291cfa0b-5ef5-4469-85f2-272b3cf933db.JPG)
+![filter](https://user-images.githubusercontent.com/62419921/205966891-41fcd5d8-a111-4c60-bd30-0a071aee9fee.JPG)
+![detail](https://user-images.githubusercontent.com/62419921/205966909-bf9aad81-d0c9-463e-9505-6b1134d79a13.JPG)
+![detail 2](https://user-images.githubusercontent.com/62419921/205966926-dcc5a3de-7901-48c7-af9a-b75b72163912.JPG)
+![no result](https://user-images.githubusercontent.com/62419921/205966828-7e7af0ba-1aa3-4533-97ad-7e1319c48b35.JPG)
