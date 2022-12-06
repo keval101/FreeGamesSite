@@ -20,3 +20,6 @@ https://freepcgames.netlify.app/
 ![detail 2](https://user-images.githubusercontent.com/62419921/205966926-dcc5a3de-7901-48c7-af9a-b75b72163912.JPG)
 
 ![no result](https://user-images.githubusercontent.com/62419921/205966828-7e7af0ba-1aa3-4533-97ad-7e1319c48b35.JPG)
+
+![image](https://user-images.githubusercontent.com/62419921/205971212-16d72272-6b17-4609-b7ec-584a3bb51bae.png)
+
