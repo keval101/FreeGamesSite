@@ -34,7 +34,7 @@
                 </ul>
             </div>
 
-            <button class="filter-button sort-icon" (click)="sortGames()" [class.inactive-sort]="isSortedGames">
+            <button class="filter-button sort-icon" (click)="sortGames($event)" [class.inactive-sort]="isSortedGames">
                 <img src="assets/icons/sort.svg" alt="filter-icon">
             </button>
         </div>

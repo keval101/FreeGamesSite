@@ -10,7 +10,7 @@
 
 <div class="body-padding game-list" *ngIf="isResponse">
     <ng-container *ngFor="let game of games">
-        <div class="game-card" [routerLink]="['/game-detail', game.id]">
+        <div class="game-card" [routerLink]="['/game', game.id]">
             <div class="game-card-image">
                 <img [src]="game.thumbnail" [alt]="game.title">
             </div>

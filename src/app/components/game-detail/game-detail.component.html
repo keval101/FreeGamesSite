@@ -15,8 +15,8 @@
             <p class="game-description-text">{{gameDescription}}</p>
         </div>
         <div class=" d-flex justify-content-center align-items-center">
-            <img [src]="gameScreenshots[1].image" class="game-description-image" *ngIf="gameScreenshots.length >= 2">
-            <img [src]="game.thumbnail" class="game-description-image" *ngIf="!gameScreenshots.length">
+            <img [src]="gameScreenshots[0].image" class="game-description-image" *ngIf="gameScreenshots.length >= 2">
+            <img [src]="game.thumbnail" class="game-description-image" *ngIf="!gameScreenshots.length || gameScreenshots.length >= 1">
         </div>
     </div>
 

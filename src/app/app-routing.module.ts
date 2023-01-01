@@ -20,7 +20,7 @@ const routes: Routes = [
     component: FilterPanelComponent
   },
   {
-    path: 'game-detail/:id',
+    path: 'game/:id',
     component: GameDetailComponent
   }
 ];

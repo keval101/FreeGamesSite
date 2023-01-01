@@ -18,12 +18,16 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._service.getGameList().subscribe(res => {
-      this.games = res;
+    if(!this.games.length) {
+      this._service.getGameList().subscribe(res => {
+        this.games = res;
+        setTimeout(() => { this.isResponse = true}, 1000);
+      })
+    } else {
       setTimeout(() => { this.isResponse = true}, 1000);
-    })
+    }
 
-    this.getSomeGamesDetails();
+    // this.getSomeGamesDetails();
   }
 
   getSomeGamesDetails(): void {

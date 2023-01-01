@@ -19,6 +19,7 @@ export class FilterPanelComponent implements OnInit {
   startX: any;
   isSortedGames = false;
   scrollLeft: any;
+  allGames = []
 
   slider = document.querySelector<HTMLElement>('.filter-tags-container');
 
@@ -27,6 +28,7 @@ export class FilterPanelComponent implements OnInit {
   ngOnInit(): void {
     this._service.getGameList().subscribe(res => {
       this.filterGames = res;
+      this.allGames = res;
       setTimeout(() => { this.isResponse = true}, 1000);
     })
 
@@ -39,13 +41,16 @@ export class FilterPanelComponent implements OnInit {
   }
 
   filterGamesByTags(): void {
-    console.log(this.selectedTags);
     this.selectedTags.length > 0 ? this.hasSearched = true : this.hasSearched = false;
     const tags = []
     this.selectedTags.map(x => tags.push(x.id));
     const payload = tags.join('.')
     if(payload) {
-      this._service.filterGameByTag(payload).subscribe(games => this.filterGames = games);
+      if(this.isSortedGames === true) {
+        this.sortGames()
+      } else {
+        this._service.filterGameByTag(payload).subscribe(games => this.filterGames = games);
+      }
     } else {
       this.isResponse = false;
       this._service.getGameList().subscribe(games => {
@@ -57,11 +62,18 @@ export class FilterPanelComponent implements OnInit {
 
   searchGame(e): void {
     const name = e.target.value;
-    name ? this.hasSearched = true : this.hasSearched = false;
-    this._service.filterGameByName(name).subscribe(games => {
-      this.filterGames = games
-      setTimeout(() => { this.isResponse = true}, 1000);
-    })
+    let filterGames = []
+    // name ? this.hasSearched = true : this.hasSearched = false;
+    if(!this.selectedTags.length) {
+      filterGames = this.allGames.filter(game => game.title.toLowerCase().includes(name.toLowerCase()));
+      this.filterGames = filterGames
+    } else if(name && this.selectedTags.length) {
+      filterGames = this.filterGames.filter(game => game.title.toLowerCase().includes(name.toLowerCase()));
+      this.filterGames = filterGames
+    } else {
+      this.filterGamesByTags();
+    }
+
   }
 
   clearFilter(): void {
@@ -91,7 +103,6 @@ export class FilterPanelComponent implements OnInit {
       return;
     }
 
-    // console.log(e);
     const x = e.pageX - el.offsetLeft;
     const scroll = x - this.startX;
     el.scrollLeft = this.scrollLeft - scroll;
@@ -103,7 +114,7 @@ export class FilterPanelComponent implements OnInit {
     this.filterGamesByTags();
   }
 
-  sortGames(): void {
+  sortGames(event?: any): void {
     const tags = []
     this.selectedTags.map(x => tags.push(x.id));
     const payload = tags.join('.')
@@ -115,6 +126,6 @@ export class FilterPanelComponent implements OnInit {
         this.filterGames = res.reverse();
       }
     })
-    this.isSortedGames = !this.isSortedGames
+    if(event) this.isSortedGames = !this.isSortedGames
   }
 }
