@@ -3,7 +3,7 @@ import { Injectable, Input } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators'
 
-const API_URL = 'https://free-to-play-games-database.p.rapidapi.com/api';
+const API_URL = 'https://www.freetogame.com/api';
 
 export interface Tag {
   name: string,
@@ -23,7 +23,7 @@ export class GameService {
   constructor(private _http: HttpClient) { }
   
   getGameList(): Observable<any> {
-    return this._http.get(`${API_URL}/games`, {headers: this.headers})
+    return this._http.get(`${API_URL}/games`)
     .pipe(
       map((response) => {
         return response;
@@ -35,7 +35,7 @@ export class GameService {
   }
 
   getGameDetail(gameID): Observable<any> {
-    return this._http.get(`${API_URL}/game`, {headers: this.headers, params: {id: gameID}})
+    return this._http.get(`${API_URL}/game`, { params: {id: gameID}})
     .pipe(
       map((response) => {
         return response;
@@ -47,7 +47,7 @@ export class GameService {
   }
 
   filterGameByTag(tag): Observable<any> {
-    return this._http.get(`${API_URL}/filter`, {headers: this.headers, params: {tag: tag}})
+    return this._http.get(`${API_URL}/filter`, { params: {tag: tag}})
     .pipe(
       map((response) => {
         return response;
@@ -59,7 +59,7 @@ export class GameService {
   }
 
   filterGameByName(name: string): Observable<any> {
-    return this._http.get(`${API_URL}/games`, {headers: this.headers})
+    return this._http.get(`${API_URL}/games`)
     .pipe(
       map((response: any[]) => {
         console.log(name)
@@ -78,7 +78,7 @@ export class GameService {
     if(sortBy) filterPayload = `games?sort-by=${sortBy}`;
     if(tag && sortBy) filterPayload = `filter?tag=${tag}&sort=${sortBy}`;
 
-    return this._http.get(`${API_URL}/${filterPayload}`, {headers: this.headers})
+    return this._http.get(`${API_URL}/${filterPayload}`)
     .pipe(
       map((response) => {
         return response;
