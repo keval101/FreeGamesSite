@@ -25,7 +25,8 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/_redirects"
+              "src/_redirects",
+              "src/googlec9f6dcd9e9ade87a.html"
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
