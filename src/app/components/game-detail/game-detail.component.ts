@@ -33,7 +33,6 @@ export class GameDetailComponent implements OnInit {
         if (response) {
           this.isResponse = true;
           this.game = response;
-          console.log(this.game)
           this._service.updatePageTitle(`${this.game?.title} | Download and Play for Free`)
           this.gameScreenshots = this.game.screenshots
           const metaObject  = {
@@ -44,8 +43,6 @@ export class GameDetailComponent implements OnInit {
           this._service.updateMetaTags(metaObject)
           //limit only display 2 paragraph
           this.gameDescription = response.description.substr(0, this.getPosition(response.description, '\n', 4));
-          console.log(this.getPosition(response.description, '\n', 4))
-          console.log(response)
         }
       }
     )

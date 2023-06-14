@@ -44,7 +44,6 @@ export class HomeComponent implements OnInit {
   }
 
   lcickme(): void {
-    console.log(this.newGames);
     this.randomGameArray = this.newGames;
   }
 }

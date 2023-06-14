@@ -74,7 +74,6 @@ export class GameService {
     return this._http.get(`${API_URL}/games`, {headers: this.headers})
     .pipe(
       map((response: any[]) => {
-        console.log(name)
         const filterGames = response.filter(game => game.title.toLowerCase().includes(name.toLowerCase()));
         return filterGames;
       }),
