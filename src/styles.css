@@ -24,8 +24,7 @@ body {
     font-size: 1.2rem;
     background-color: var(--bg-color);
     color: var(--text-color);
-    /* background-image: url(./assets/images/0.jpg); */
-    background-image: url(./assets/images/3.png);
+    background-image: url(./assets/images/3.jpg);
     position: relative;
     overflow-x: hidden;
 }

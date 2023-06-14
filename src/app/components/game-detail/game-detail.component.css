@@ -98,6 +98,7 @@
     width: 700px; 
     height: auto; 
     image-rendering: optimizeQuality;
+    image-rendering: -webkit-optimize-contrast;
     position: relative;
 }
 

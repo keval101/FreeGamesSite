@@ -30,6 +30,7 @@
 
 .game-card-image img {
     border-radius: 8px;
+    image-rendering: -webkit-optimize-contrast;
     image-rendering: optimizeQuality;
 }
 
