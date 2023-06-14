@@ -1,5 +1,7 @@
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Input } from '@angular/core';
+import { Inject, Injectable, Input, PLATFORM_ID } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators'
 
@@ -13,14 +15,24 @@ export interface Tag {
   providedIn: 'root'
 })
 export class GameService {
-
+  isBrowser = false;
   selectedGame: any;
   headers = {
     'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com',
     'x-rapidapi-key': '390d194e23mshc197e2549dfec2ap1e776fjsn41258817eb2f'
   }
 
-  constructor(private _http: HttpClient) { }
+  pageUrl: string;
+  tagsDesctiption;
+
+  constructor(
+    private _http: HttpClient, 
+    private title: Title, 
+    private meta: Meta, 
+    @Inject(PLATFORM_ID) private platformId: any,
+    @Inject(DOCUMENT) private dom) { 
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
   
   getGameList(): Observable<any> {
     return this._http.get(`${API_URL}/games`, {headers: this.headers})
@@ -87,6 +99,42 @@ export class GameService {
         return of(err);
       }),
     );
+  }
+
+  updatePageTitle(title: string) {
+    this.title.setTitle(title);
+  }
+
+  createCanonicalLink(url?: string) {
+    if(this.isBrowser) {
+      let canURL = url == undefined ? this.dom.URL : url;
+      this.pageUrl = canURL;
+      let link: HTMLLinkElement = this.dom.createElement('link');
+      link.setAttribute('rel', 'canonical');
+      this.dom.head.appendChild(link);
+      link.setAttribute('href', canURL);
+    }
+  }
+
+  updateMetaTags(metaObject: any) {
+    this.createCanonicalLink();
+    this.meta.updateTag( { name: "description", content: metaObject.description }, "name='description'");
+    this.meta.updateTag( { name: "keywords", content: metaObject.keywords }, "name='keywords'");
+    this.meta.updateTag( { name: "image", content: 'https://freepcgames.netlify.app/assets/images/icon.png' }, "name='image'");
+
+    this.meta.updateTag( { property: 'og:type', content: 'website' }, "property='og:type'");
+    this.meta.updateTag( { property: 'og:url', content: this.pageUrl }, "property='og:url'");
+    this.meta.updateTag( { property: 'og:title', content: metaObject.metaTitle }, "property='og:title'");
+    this.meta.updateTag( { property: 'og:description', content: metaObject.description }, "property='og:description'");
+    this.meta.updateTag( { property: 'og:image:secure_url', content: 'https://freepcgames.netlify.app/assets/images/icon.png' }, "property='og:image:secure_url'");
+
+    
+    this.meta.updateTag({ name: 'twitter:creator', content: `@KevalVadhiya`}, "name='twitter:creator'")
+    this.meta.updateTag({ name: 'twitter:site', content: `@FreePcGames`}, "name='twitter:site'")
+    this.meta.updateTag({ name: 'twitter:title', content: metaObject.metaTitle}, "name='twitter:title'")
+    this.meta.updateTag({ name: 'twitter:description', content: metaObject.description}, "name='twitter:description'")
+    this.meta.updateTag({ name: 'twitter:image', content: `https://freepcgames.netlify.app/assets/images/icon.png`}, "name='twitter:image'")
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image'}, "name='twitter:card'")
   }
 
 

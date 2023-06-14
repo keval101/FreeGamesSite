@@ -32,6 +32,8 @@ export class FilterPanelComponent implements OnInit {
       setTimeout(() => { this.isResponse = true}, 1000);
     })
 
+    this._service.updatePageTitle('Filter Free PC Games')
+
     // sorting
     this.filterTags = this._service.gameTags.sort((a,b) =>{
       if (a.name < b.name) return -1;

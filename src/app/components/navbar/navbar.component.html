@@ -5,8 +5,8 @@
         </div>
 
         <div class="nav-items d-flex">
-            <a class="text-decoration-none px-4 nav-item" (click)="closeMenu()" [routerLink]="['home']" routerLinkActive='active'>Home</a>
-            <a class="text-decoration-none px-4 nav-item" (click)="closeMenu()" [routerLink]="['category']" routerLinkActive='active'>Category</a>
+            <a class="text-decoration-none px-4 nav-item" (click)="closeMenu()" [routerLink]="['/']" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive='active'>Home</a>
+            <a class="text-decoration-none px-4 nav-item" (click)="closeMenu()" [routerLink]="['/category']" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive='active'>Category</a>
         </div>
     </nav>
 </div>
